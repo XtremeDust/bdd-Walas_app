@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Querie extends Model
 {
     
-    
-        protected $table = 'queries';
+    protected $fillable = ['Cliente','Doctor','Consulta', 'Fecha', 'Estado_fk', 'Precio'];
+     
     
         // Relación con el cliente
         public function cliente()

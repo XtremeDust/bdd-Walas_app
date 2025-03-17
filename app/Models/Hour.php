@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hour extends Model
 {
-    protected $fillable = [
-        'id',
-        'hour',
-    ];
+    protected $fillable = ['hour'];
+
+    function fecha()
+    {
+        return $this->hasOne(Day::class, 'hora_fk', 'id');  
+    }
 
     function consulta()
     {

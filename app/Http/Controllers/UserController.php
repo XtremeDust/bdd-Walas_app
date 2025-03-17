@@ -15,6 +15,14 @@ class UserController extends Controller
 
     public function getMessage()
     {     
+
+         $user=User::create ([
+            'name' => 'Andres',
+            'last_name' => 'Marcano',
+            'email' => 'MarcaA12@gmail.com',
+            'telefono' => '04140259632',
+            'password' => Hash::make('password'),
+        ]);
         /*
         $vr='last name';
         $user=User::find(7);
@@ -47,7 +55,7 @@ class UserController extends Controller
         la busqueda es muy especifica
         */
        
-         $user =User::where('last_name','Alas')->first(); //solo sale el primer resultado con first
+        // $user =User::where('last_name','Alas')->first(); //solo sale el primer resultado con first
 
         //buscar por id
         // $user = User::find(1);
@@ -56,8 +64,10 @@ class UserController extends Controller
         'user'=>is_null($user) ? 'El usuario no existe' : $user
         'user'=>!is_null($user) ? 'El usuario si existe' : $user
         */
-        return response()->json(['user' => is_null($user) ? 'El usuario no existe' : $user
-        ], 202);
+        return response()->json([
+            'message' => 'Usuario creado correctamente',
+            'usuario' => $user,
+        ], 201);
     }  
 };
 
